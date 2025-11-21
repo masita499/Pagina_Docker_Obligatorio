@@ -6,7 +6,7 @@
 // $password = 'password12345679';
 
 $host = getenv('DB_HOST') ?: 'localhost';
-$db   = getenv('DB_NAME') ?: 'ecommerce';
+$db   = getenv('DB_NAME') ?: 'data_base_obli';
 $user = getenv('DB_USER') ?: 'admin';
 $pass = getenv('DB_PASS') ?: 'password';
 
