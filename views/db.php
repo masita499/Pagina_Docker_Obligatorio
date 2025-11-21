@@ -21,12 +21,18 @@ try {
     $pdo = new PDO($dsn, $user, $pass, $options);
 } catch (PDOException $e) {
     die("Connection error : " . $e->getMessage());
-}  
-
-
-try {
-	$pdo = new PDO("mysql:host=$host;dbname=$name", $user, $password);
-	$pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-} catch( PDOException $exception ) {
-	echo "Connection error :" . $exception->getMessage();
 }
+
+// try {
+//     $pdo = new PDO($dsn, $user, $pass, $options);
+// } catch (PDOException $e) {
+//     die("Connection error : " . $e->getMessage());
+// }  
+
+
+// try {
+// 	$pdo = new PDO("mysql:host=$host;dbname=$db", $user, $pass);
+// 	$pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+// } catch( PDOException $exception ) {
+// 	echo "Connection error :" . $exception->getMessage();
+// }
