@@ -6,6 +6,10 @@ Route::add('/', function() {
     require __DIR__ . '/views/home.php';
 });
 
+Route::add('/shop', function() {
+    require __DIR__ . '/views/products.php';
+});
+
 Route::add('/login', function() {
     require __DIR__ . '/views/login.php';
 });
