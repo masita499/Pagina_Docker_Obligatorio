@@ -4,7 +4,7 @@ require __DIR__ . '/header.php';
 require __DIR__ . '/../csrf.php';
 require __DIR__ . '/db.php';
 
-$products;
+$products = [];
 $searchEmpty = false;
 $page = 1;
 $results_per_page = 10;
@@ -49,19 +49,27 @@ if(isset($_POST['q']) && isset($_GET['c']) && CSRF::validateToken($_POST['token'
 
 	$statement = $pdo->prepare("SELECT * FROM products WHERE category=? LIMIT $page_first_result, $results_per_page");
 	$statement->execute(array(filter_input(INPUT_GET, 'c')));
+
 	if($statement->rowCount() > 0) {
 		$products = $statement->fetchAll(PDO::FETCH_ASSOC);
-	}
+	} else {
+        $searchEmpty = true;  
+    }
+	
 } else {
 	$page_first_result = ($page - 1) * $results_per_page;
 	$statement = $pdo->prepare("SELECT count(*) FROM products");
 	$statement->execute();
+
 	$number_of_result = $statement->fetchColumn();
 	$number_of_pages = ceil($number_of_result / $results_per_page);
+
 	$statement = $pdo->prepare("SELECT * FROM products LIMIT $page_first_result, $results_per_page");
 	$statement->execute();
 	if($statement->rowCount() > 0) {
 		$products = $statement->fetchAll(PDO::FETCH_ASSOC);
+	} else {
+        $searchEmpty = true;   
 	}
 }
 
