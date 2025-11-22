@@ -1,10 +1,5 @@
 <?php
 
-// $host = 'db-obli.clcq86my0apl.us-east-1.rds.amazonaws.com';
-// $name = 'data_base_obli';
-// $user = 'admin';
-// $password = 'password12345679';
-
 $host = getenv('DB_HOST') ?: 'localhost';
 $db   = getenv('DB_NAME') ?: 'data_base_obli';
 $user = getenv('DB_USER') ?: 'admin';
